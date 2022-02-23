@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ezihe Godswill - Frontend engineer(Linktree)</title>
+    <style>
+      @font-face {
+        font-family: Euclid;
+        src: url(./assets/fonts/EuclidCircularB-Regular.woff2);
+        font-weight: normal;
+      }
+
+      @font-face {
+        font-family: Euclid;
+        src: url(./assets/fonts/EuclidCircularB-Bold.woff2);
+        font-weight: bold;
+      }
+      *,
+      *::before,
+      ::after {
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: Euclid, Poppins, Noto Sans, sans-serif;
+        line-height: 1.5;
+        background: #f8f8f8;
+      }
+
+      .ctn {
+        width: min(90%, 1140px);
+        margin: 0 auto;
+      }
+
+      .page-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .page-top > .ctn {
+        min-height: 104px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+      }
+
+      .contact-me-btn {
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        border: 1.4px solid #444;
+        border-radius: 40px;
+        padding: 10px 24px;
+        display: inline-block;
+        margin-left: auto;
+        transition: 250ms;
+      }
+
+      .contact-me-btn:hover {
+        color: #f8f8f8;
+        background: #444;
+      }
+
+      .page-header {
+        padding: 30vh 0px 10vh;
+      }
+
+      .page-header h1 {
+        line-height: 1.2;
+        margin: 16px 0px;
+      }
+
+      .page-header p {
+        max-width: 400px;
+        margin-bottom: 24px;
+      }
+
+      .page-header h1 span {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: block;
+        position: relative;
+      }
+
+      .mobile-menu .toggle {
+        --scale: 48px;
+        --primary-toggle-color: #f8f8f8;
+        --secondary-toggle-color: #444;
+        width: var(--scale);
+        height: var(--scale);
+        border-radius: 50%;
+        background: var(--secondary-toggle-color);
+        color: var(--primary-toggle-color);
+        cursor: pointer;
+      }
+
+      .mobile-menu .toggle::before,
+      .mobile-menu .toggle::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 2px;
+        background: var(--primary-toggle-color);
+        top: 50%;
+        left: 50%;
+        transition: transform 250ms;
+      }
+
+      .mobile-menu .toggle::before {
+        transform: translate(-50%, -4px);
+      }
+
+      .mobile-menu .toggle::after {
+        transform: translate(-50%, 4px);
+      }
+
+      .mobile-menu.open .toggle::before {
+        transform: translate(-50%, 0) rotate(-45deg);
+      }
+
+      .mobile-menu.open .toggle::after {
+        transform: translate(-50%, 0) rotate(45deg);
+      }
+
+      .mobile-menu > ul {
+        display: none;
+      }
+
+      .mobile-menu.open > ul {
+        display: block;
+        position: absolute;
+        top: 64px;
+        right: 15%;
+        transform: translate(5%, 0);
+        width: min(80vw, 320px);
+        background: #444;
+        color: #f8f8f8;
+        border-radius: 24px;
+        padding: 24px 16px;
+        text-align: center;
+      }
+
+      .mobile-menu ul li {
+        list-style: none;
+        margin-bottom: 16px;
+      }
+
+      .mobile-menu li a,
+      nav[data-menu-type="desktop"] li a {
+        padding: 8px 24px;
+        display: block;
+        border-radius: 24px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .mobile-menu ul li:last-child a {
+        background: #f8f8f8;
+        color: #444;
+      }
+
+      nav[data-menu-type="desktop"] {
+        display: none;
+      }
+
+      @media (min-width: 760px) {
+        .mobile-menu {
+          display: none;
+        }
+
+        nav[data-menu-type="desktop"] {
+          display: block;
+        }
+
+        nav[data-menu-type="desktop"] ul li {
+          display: inline-block;
+          margin-left: 24px;
+          list-style: none;
+        }
+
+        nav[data-menu-type="desktop"] ul li:last-child a {
+          background: #444;
+          color: #f8f8f8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-top">
+      <div class="ctn">
+        <a class="logo" href="#">0xghk</a>
+        <nav class="mobile-menu" data-menu-type="mobile">
+          <div class="toggle"></div>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Resume</a></li>
+          </ul>
+        </nav>
+        <nav data-menu-type="desktop">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Resume</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <header class="page-header">
+      <div class="ctn">
+        &nbsp;<span>Hi there <span>👋🏾</span>, I'm Godswill</span>
+        <h1><span>Designer.</span><span>Frontend Engineer.</span></h1>
+        <p>
+          I'm a frontend engineer from Nigeria. I design and build interactive
+          and intuitive experiences on the web.
+        </p>
+
+        <a class="contact-me-btn" href="mailto:ezihegodswill01@gmail.com"
+          >Get in touch</a
+        >
+      </div>
+    </header>
+
+    <script>
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      const mobileMenuToggle = document.querySelector(".toggle");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
