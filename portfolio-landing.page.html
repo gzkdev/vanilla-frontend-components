@@ -8,13 +8,13 @@
     <style>
       @font-face {
         font-family: Euclid;
-        src: url(./assets/fonts/EuclidCircularB-Regular.woff2);
+        src: url(./assets/fonts/GTWalsheimPro-Regular.woff);
         font-weight: normal;
       }
 
       @font-face {
         font-family: Euclid;
-        src: url(./assets/fonts/EuclidCircularB-Bold.woff2);
+        src: url(./assets/fonts/GTWalsheimPro-Bold.woff);
         font-weight: bold;
       }
       *,
@@ -31,14 +31,14 @@
       }
 
       body {
-        font-size: 1rem;
+        font-size: 1.25rem;
         font-family: Euclid, Poppins, Noto Sans, sans-serif;
         line-height: 1.5;
         background: #f8f8f8;
       }
 
       .ctn {
-        width: min(90%, 1140px);
+        width: min(90%, 1200px);
         margin: 0 auto;
       }
 
@@ -47,6 +47,8 @@
         top: 0;
         left: 0;
         width: 100%;
+        background: #f8f8f8;
+        z-index: 1000;
       }
 
       .page-top > .ctn {
@@ -81,7 +83,8 @@
       }
 
       .page-header {
-        padding: 30vh 0px 10vh;
+        padding: 30vh 0px 30vh;
+        overflow: hidden;
       }
 
       .page-header h1 {
@@ -90,12 +93,32 @@
       }
 
       .page-header p {
-        max-width: 400px;
         margin-bottom: 24px;
+      }
+
+      .page-header-ctn {
+        display: grid;
+        grid-gap: 1rem;
+      }
+
+      .page-header-text-box {
+        max-width: 440px;
       }
 
       .page-header h1 span {
         display: block;
+      }
+
+      .page-header-banner {
+        min-height: 50vh;
+        position: relative;
+      }
+
+      .page-header-banner img {
+        display: block;
+        width: min(500px, 90vw);
+        object-fit: contain;
+        margin: 40px auto;
       }
 
       .mobile-menu {
@@ -173,6 +196,7 @@
         border-radius: 24px;
         text-decoration: none;
         color: inherit;
+        font-size: 1rem;
       }
 
       .mobile-menu ul li:last-child a {
@@ -185,13 +209,13 @@
       }
 
       @media (min-width: 760px) {
-        .mobile-menu {
+        /* .mobile-menu {
           display: none;
-        }
+        } */
 
-        nav[data-menu-type="desktop"] {
+        /* nav[data-menu-type="desktop"] {
           display: block;
-        }
+        } */
 
         nav[data-menu-type="desktop"] ul li {
           display: inline-block;
@@ -204,12 +228,24 @@
           color: #f8f8f8;
         }
       }
+
+      @media (min-width: 1000px) {
+        .page-header-ctn {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="page-top">
       <div class="ctn">
-        <a class="logo" href="#">0xghk</a>
+        <a class="logo" href="#">
+          <!-- <span>Hey, I'm </span> -->
+          Godswill
+          <!-- <span>👋🏾</span> -->
+        </a>
         <nav class="mobile-menu" data-menu-type="mobile">
           <div class="toggle"></div>
           <ul>
@@ -232,17 +268,21 @@
       </div>
     </div>
     <header class="page-header">
-      <div class="ctn">
-        &nbsp;<span>Hi there <span>👋🏾</span>, I'm Godswill</span>
-        <h1><span>Designer.</span><span>Frontend Engineer.</span></h1>
-        <p>
-          I'm a frontend engineer from Nigeria. I design and build interactive
-          and intuitive experiences on the web.
-        </p>
+      <div class="ctn page-header-ctn">
+        <div class="page-header-text-box">
+          <h1><span>UI Designer/</span><span>Frontend Engineer.</span></h1>
+          <p>
+            I'm a frontend engineer from Nigeria. I design and build interactive
+            and intuitive experiences on the web.
+          </p>
 
-        <a class="contact-me-btn" href="mailto:ezihegodswill01@gmail.com"
-          >Get in touch</a
-        >
+          <a class="contact-me-btn" href="mailto:ezihegodswill01@gmail.com"
+            >Get in touch</a
+          >
+        </div>
+        <div class="page-header-banner">
+          <img src="./assets/images/Piercy.jpg" alt="" />
+        </div>
       </div>
     </header>
 
