@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: GTWalshheimPro;
+        src: url(./assets/fonts/GTWalsheimPro-Regular.woff);
+        font-weight: normal;
+      }
+
+      @font-face {
+        font-family: GTWalshheimPro;
+        src: url(./assets/fonts/GTWalsheimPro-Bold.woff);
+        font-weight: bold;
+      }
+      *,
+      *::before,
+      ::after {
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --step--2: clamp(0.96rem, calc(0.63rem + 0.47vw), 0.72rem);
+        --step--1: clamp(1.2rem, calc(0.78rem + 0.59vw), 0.9rem);
+        --step-0: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.5rem);
+        --step-1: clamp(1.41rem, calc(1.22rem + 0.91vw), 1.88rem);
+        --step-2: clamp(1.76rem, calc(1.53rem + 1.14vw), 2.34rem);
+        --step-3: clamp(2.2rem, calc(1.91rem + 1.43vw), 2.93rem);
+        --step-4: clamp(2.75rem, calc(2.39rem + 1.79vw), 3.66rem);
+        --step-5: clamp(3.43rem, calc(2.99rem + 2.23vw), 4.58rem);
+        --step-6: clamp(4.29rem, calc(3.73rem + 2.79vw), 5.72rem);
+        --step-7: clamp(5.36rem, calc(4.67rem + 3.49vw), 7.15rem);
+      }
+
+      body {
+        font-size: var(--step--1);
+        font-family: GTWalshheimPro, Poppins, Noto Sans, sans-serif;
+        line-height: 1.5;
+        background: #f8f8f8;
+        color: hsl(249, 100%, 5%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .ctn {
+        width: min(90%, 1200px);
+        margin-inline: auto;
+      }
+
+      .container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      button {
+        padding: 1rem 1.5rem;
+        border: none;
+        font: inherit;
+        border-radius: 24px;
+        transition: transform 200ms ease-in-out;
+        cursor: pointer;
+      }
+
+      button:active {
+        transform: scale(0.9);
+      }
+
+      .notification {
+        padding: 0.5rem 2rem;
+        border-radius: 4px;
+        background: rgb(178, 255, 148);
+        color: rgb(30, 95, 4);
+        box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+        transform: translateY(100%);
+        animation: 200ms drop linear;
+        animation-fill-mode: both;
+        margin-bottom: 1rem;
+      }
+
+      @keyframes drop {
+        50% {
+          transform: translateY(0);
+        }
+        70% {
+          transform: translateY(0) scale(0.9);
+        }
+        100% {
+          transform: translateY(0) scale(1.04);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <button class="btn">Show notification</button>
+
+    <script>
+      const btn = document.querySelector(".btn");
+      const ctn = document.querySelector(".container");
+
+      btn.addEventListener("click", () => createNotification());
+
+      function createNotification() {
+        const notification = document.createElement("div");
+        notification.classList.add("notification");
+
+        notification.innerText = "Hey, this is it!";
+
+        ctn.appendChild(notification);
+
+        setTimeout(() => notification.remove(), 1000);
+      }
+    </script>
+  </body>
+</html>

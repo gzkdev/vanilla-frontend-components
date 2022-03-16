@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: GTWalshheimPro;
+        src: url(./assets/fonts/GTWalsheimPro-Regular.woff);
+        font-weight: normal;
+      }
+
+      @font-face {
+        font-family: GTWalshheimPro;
+        src: url(./assets/fonts/GTWalsheimPro-Bold.woff);
+        font-weight: bold;
+      }
+      *,
+      *::before,
+      ::after {
+        padding: 0;
+        margin: 0;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --step--2: clamp(0.96rem, calc(0.63rem + 0.47vw), 0.72rem);
+        --step--1: clamp(1.2rem, calc(0.78rem + 0.59vw), 0.9rem);
+        --step-0: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.5rem);
+        --step-1: clamp(1.41rem, calc(1.22rem + 0.91vw), 1.88rem);
+        --step-2: clamp(1.76rem, calc(1.53rem + 1.14vw), 2.34rem);
+        --step-3: clamp(2.2rem, calc(1.91rem + 1.43vw), 2.93rem);
+        --step-4: clamp(2.75rem, calc(2.39rem + 1.79vw), 3.66rem);
+        --step-5: clamp(3.43rem, calc(2.99rem + 2.23vw), 4.58rem);
+        --step-6: clamp(4.29rem, calc(3.73rem + 2.79vw), 5.72rem);
+        --step-7: clamp(5.36rem, calc(4.67rem + 3.49vw), 7.15rem);
+      }
+
+      body {
+        font-size: var(--step--1);
+        font-family: GTWalshheimPro, Poppins, Noto Sans, sans-serif;
+        line-height: 1.5;
+        background: #f8f8f8;
+        color: hsl(249, 100%, 5%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .ctn {
+        width: min(90%, 1200px);
+        margin-inline: auto;
+      }
+
+      .emoji {
+        position: fixed;
+        top: -5vh;
+        transform: translateY(0);
+        z-index: -1;
+        animation: fall 3s linear;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <input id="input" name="emoji" placeholder="enter emoji" type="text" />
+      <button id="btn">change emoji</button>
+    </form>
+
+    <script>
+      const form = document.querySelector("#form");
+      const input = document.querySelector("#input");
+      const btn = document.querySelector("#btn");
+
+      form.addEventListener("submit", makeItRain);
+
+      function makeItRain(e) {
+        e.preventDefault();
+        const choiceEmoji = e.target.emoji.value;
+        setInterval(() => createEmoji(choiceEmoji), 300);
+      }
+
+      function createEmoji(emojitext) {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        emoji.innerText = emojitext;
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
