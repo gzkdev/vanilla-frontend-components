@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        /* perspective: 500px; */
+        height: 100%;
+        padding-bottom: 70vh;
+      }
+
+      .box {
+        width: 240px;
+        height: 300px;
+        aspect-ratio: 1/1.5;
+        /* background-color: #ebebeb; */
+        position: sticky;
+        top: 20%;
+        margin: auto;
+        display: block;
+        margin-bottom: 20vh;
+      }
+
+      .box .inner {
+        width: 100%;
+        height: 100%;
+        background-color: palevioletred;
+        border: 1px solid #fff;
+      }
+
+      .box:nth-child(1) .inner {
+        transform: scale(0.8) rotate(-12.5deg);
+      }
+
+      .box:nth-child(2) .inner {
+        transform: scale(0.8) rotate(-9.5deg);
+      }
+
+      .box:nth-child(3) .inner {
+        transform: scale(0.8) rotate(-6.5deg);
+      }
+
+      .box:nth-child(4) .inner {
+        transform: scale(0.8) rotate(-4.8deg);
+      }
+
+      .box:nth-child(5) .inner {
+        transform: scale(0.8) rotate(6.2deg);
+      }
+
+      .box:nth-child(6) .inner {
+        transform: scale(0.8) rotate(4.5deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+    <div class="box">
+      <div class="inner"></div>
+    </div>
+  </body>
+</html>
