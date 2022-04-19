@@ -67,21 +67,23 @@
 
       .ctn {
         width: min(90%, 1200px);
-        margin-inline: auto;
+        margin: 0 auto;
+        padding-inline: 1rem;
       }
 
       .section-header {
         width: min(100%, 560px);
-        margin-block-end: 4rem;
+        margin: 0 0 4rem 0;
       }
 
       .section-header.alt {
-        margin-inline: auto;
+        margin: 0 auto 4rem;
         text-align: center;
       }
 
-      section {
-        padding-block: 5rem;
+      section,
+      footer {
+        padding: 5rem 0;
       }
 
       .header {
@@ -90,7 +92,7 @@
             rgba(0, 0, 0, 0.8)
           ),
           url(./assets/images/kate-hliznitsova-hkXaw0Qgb2U-unsplash.jpg);
-        background-attachment: fixed;
+        /* background-attachment: fixed; */
         background-size: cover;
         background-position: right;
         background-repeat: no-repeat;
@@ -98,12 +100,14 @@
       }
 
       .header .nav {
-        position: sticky;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        mix-blend-mode: exclusion;
+        /* mix-blend-mode: exclusion; */
         z-index: 1000;
+        background: #fff;
+        color: #030338;
       }
 
       .nav-ctn {
@@ -113,7 +117,7 @@
         align-items: center;
         justify-content: space-between;
         /* REMOVE THE OVERFLOW AND MAKE YOUR PAGE RESPONSIVE */
-        overflow-x: auto;
+        overflow-x: hidden;
       }
 
       .logo {
@@ -125,10 +129,10 @@
 
       .nav-ctn ul {
         list-style: none;
-        display: flex;
+        display: none;
         align-items: center;
-        gap: 2rem;
-        flex: 1;
+        /* gap: 2rem; */
+        width: 100%;
       }
 
       .nav-ctn a {
@@ -136,28 +140,75 @@
         color: inherit;
       }
 
-      .left {
+      .nav-ctn ul li {
+        margin-left: 2rem;
+      }
+
+      .nav-ctn ul li.left {
         margin-left: auto;
       }
 
       .nav-ctn .cta {
         padding: 0.5rem 1.5rem;
-        background: #030338;
+        /* background: #030338; */
         color: inherit;
         border-radius: 100vh;
       }
 
       /* MENU NAVBARCOMPONENT */
       .menu {
-        display: none;
+        display: block;
+        width: 48px;
+        height: 48px;
+        border: none;
+        /* display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; */
+        outline: none;
+        position: relative;
+        background-color: inherit;
+        cursor: pointer;
+      }
+
+      .menu::before,
+      .menu::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 2px;
+        background-color: #030338;
+        transition: 200ms;
+        transform-origin: center;
+      }
+
+      .menu::before {
+        transform: translate(-50%, -6px);
+        box-shadow: 0 6px 0 #030338;
+      }
+
+      .menu::after {
+        transform: translate(-50%, 6px);
+      }
+
+      .menu:focus::before {
+        transform: translate(-50%, 0px) rotate(45deg);
+        box-shadow: none;
+      }
+
+      .menu:focus::after {
+        transform: translate(-50%, 0px) rotate(-45deg);
       }
 
       .hero-ctn {
-        min-height: 90vh;
+        /* min-height: 90vh; */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 20vh 0 30vh;
       }
 
       .text-ctn {
@@ -195,7 +246,7 @@
       .latest-wears {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 4rem 1rem;
       }
 
@@ -225,6 +276,94 @@
       .latest-wears > div span {
         font-size: var(--fs-1);
       }
+
+      .advert-ctn {
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        background-color: #ebebeb;
+        border-radius: 4px;
+      }
+
+      .advert-ctn > * {
+        margin: 2rem 0;
+      }
+
+      .advert-img-ctn {
+        max-height: 560px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .advert-img-ctn img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .advert-text-ctn p {
+        margin: 2rem 0;
+      }
+
+      .advert-text-ctn a {
+        text-decoration: none;
+        color: #ebebeb;
+        background-color: #030338;
+        padding: 0.5rem 2rem;
+        border-radius: 100vh;
+      }
+
+      footer {
+        background-color: #000;
+        color: #ebebeb;
+        min-height: 200px;
+      }
+
+      .footer-ctn {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 6rem;
+      }
+
+      .footer-ctn ul li {
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+
+      .footer-ctn ul li:first-child {
+        font-size: var(--fs-0);
+        font-family: "Playfair display", "Times New Roman", Times, serif;
+      }
+
+      .footer-ctn ul li a {
+        text-decoration: none;
+        color: #c7c7c7;
+      }
+
+      @media (min-width: 900px) {
+        .advert-ctn {
+          flex-direction: row-reverse;
+          padding-inline: 4rem;
+        }
+        .advert-ctn > * {
+          flex: 1;
+          margin: 0 2rem;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        .nav-ctn ul {
+          display: flex;
+        }
+
+        .menu {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -242,7 +381,7 @@
               <li class="left"><a href="#">Cart</a></li>
               <li class="cta"><a href="#">Login</a></li>
             </ul>
-            <button class="menu">menu</button>
+            <button class="menu"></button>
           </div>
         </div>
       </nav>
@@ -267,7 +406,7 @@
           <h2>The Latest</h2>
         </div>
         <div class="latest-wears">
-          <div>
+          <!-- <div>
             <a href="#">
               <div class="thumbnail">
                 <img src="./assets/images/1.jpg" alt="" />
@@ -275,7 +414,7 @@
               <h4>Men's sweater</h4>
               <span>$120</span>
             </a>
-          </div>
+          </div> -->
 
           <div>
             <a href="#">
@@ -359,5 +498,63 @@
         </div>
       </div>
     </section>
+    <section class="advert">
+      <div class="ctn">
+        <div class="advert-ctn">
+          <div class="advert-text-ctn">
+            <h2>Get more of what you want</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+              ipsa illo id, harum adipisci architecto animi repellat. Quibusdam
+              modi nemo veritatis expedita eius a!
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div class="advert-img-ctn">
+            <img
+              src="./assets/images/kate-hliznitsova-hkXaw0Qgb2U-unsplash.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="ctn">
+        <div class="footer-ctn">
+          <ul>
+            <li>Site map</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+          </ul>
+          <ul>
+            <li>Company</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+          </ul>
+          <ul>
+            <li>Shop</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+          </ul>
+          <ul>
+            <li>Categories</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
