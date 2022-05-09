@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: Satoshi, Inter, sans-serif;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        overflow-x: hidden;
+        background-color: #ebebee;
+      }
+
+      .marquee {
+        position: absolute;
+        bottom: 10vh;
+        left: 0;
+        width: max-content;
+        animation: 10s marquee linear infinite alternate-reverse;
+      }
+
+      h1 {
+        font-size: clamp(8rem, 12vw + 1rem, 208px);
+        line-height: 1.2;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="marquee">
+        <h1>Godswill Ezihe - Frontend developer & UI designer</h1>
+      </div>
+    </section>
+
+    <script src="./js/locomotive-scroll.min.js"></script>
+    <script></script>
+  </body>
+</html>
