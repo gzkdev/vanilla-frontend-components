@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      button {
+        --scale: 144px;
+        width: var(--scale);
+        height: var(--scale);
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        font-family: Poppins, sans-serif;
+        transition: 400ms transform;
+        cursor: pointer;
+      }
+
+      button:active {
+        transform: scale(0.85);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">Shock me</button>
+
+    <script>
+      const BUTTON = document.querySelector(".btn");
+
+      //   BUTTON.addEventListener("click", () => {
+      //     if (window.navigator.vibrate) {
+      //       navigator.vibrate([200]);
+      //     }
+      //   });
+
+      //   navigator.vibrate([500]);
+      function vibrate(options = { duration: 100, interval: 100, count: 1 }) {
+        if (!window) {
+          return;
+        }
+
+        if (!window.navigator) {
+          return;
+        }
+
+        if (!window.navigator.vibrate) {
+          return;
+        }
+
+        const pattern = [];
+
+        for (let index = 0; index < options.count; index++) {
+          pattern.push(options.duration);
+          pattern.push(options.interval);
+        }
+
+        window.navigator.vibrate(pattern);
+      }
+
+      BUTTON.addEventListener("click", vibrate);
+    </script>
+  </body>
+</html>
