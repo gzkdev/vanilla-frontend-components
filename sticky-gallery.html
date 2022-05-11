@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      body > div {
+        margin: 60vh 0;
+      }
+
+      .gallery__image {
+        --scale: 240px;
+        width: min(50vw, var(--scale));
+        /* height: calc(var(--scale) * 1.5); */
+        aspect-ratio: 1/1.5;
+        background-color: lightblue;
+        position: sticky;
+        top: 30vh;
+        margin: 40vh auto;
+        border: 10px solid #414361;
+      }
+
+      .gallery__image:nth-child(1) {
+        transform: rotate(5deg);
+      }
+
+      .gallery__image:nth-child(2) {
+        transform: rotate(-5deg);
+      }
+
+      .gallery__image:nth-child(3) {
+        transform: rotate(10deg);
+      }
+
+      .gallery__image:nth-child(4) {
+        transform: rotate(-15deg);
+      }
+
+      .gallery__image:nth-child(5) {
+        transform: rotate(5deg);
+      }
+
+      .gallery__image:nth-child(6) {
+        transform: rotate(-5deg);
+        visibility: none;
+        opacity: 0;
+        pointer-events: none;
+        background: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="gallery__image"></div>
+      <div class="gallery__image"></div>
+      <div class="gallery__image"></div>
+      <div class="gallery__image"></div>
+      <div class="gallery__image"></div>
+      <div class="gallery__image"></div>
+    </div>
+  </body>
+</html>
