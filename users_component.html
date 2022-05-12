@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: Satoshi, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(5, 5, 65);
+      }
+
+      .bar {
+        min-width: min(90%, 400px);
+        background-color: #fff;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        border-radius: 24px;
+        box-shadow: 0 12px 64px rgba(0, 0, 0, 0.08);
+      }
+
+      .bar__thumbnail__container {
+        display: flex;
+        align-items: center;
+      }
+
+      .bar__thumbnail__container::after {
+        content: "";
+        width: 4px;
+        min-height: 64px;
+        background-color: #ebebeb;
+        margin: 0 0.5rem;
+        border-radius: 8px;
+      }
+
+      .bar__thumbnail {
+        --scale: 56px;
+        width: var(--scale);
+        height: var(--scale);
+        border-radius: 50%;
+        background-color: #ebebeb;
+        margin-right: 0.5rem;
+      }
+
+      .bar__text__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .bar__text__container span:nth-child(2) {
+        font-size: clamp(1.8rem, 24px, 36px);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <div class="bar__thumbnail__container">
+        <div class="bar__thumbnail"></div>
+        <div class="bar__thumbnail"></div>
+        <div class="bar__thumbnail"></div>
+      </div>
+      <div class="bar__text__container">
+        <span>Happy Customers</span>
+        <span>3.5K</span>
+      </div>
+    </div>
+  </body>
+</html>
