@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-100: hsl(231, 89%, 55%);
+        --primary-200: hsl(214, 89%, 55%);
+        --primary-210: hsl(214, 89%, 75%);
+        --secondary-100: hsl(45, 180%, 49%);
+        --secondary-200: hsl(0, 87%, 59%);
+        --background-100: hsl(0, 0%, 95%);
+        --background-200: hsl(0, 0%, 100%);
+        --text-color-100: hsl(231, 89%, 5%);
+      }
+
+      body {
+        display: flex;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        /* background-color: var(--text-color-100); */
+        background-color: var(--background-100);
+        color: var(--background-100);
+      }
+
+      .card {
+        width: min(90%, 320px);
+        padding: 1rem 1rem;
+        background-color: var(--background-200);
+        color: var(--text-color-100);
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 0 12px var(--background-100);
+      }
+
+      .card__content {
+        margin: 0.5rem 0 1rem;
+      }
+
+      .toggle {
+        min-height: 48px;
+        padding: 0 2rem;
+        background-color: var(--primary-100);
+        color: var(--background-100);
+        border: none;
+        outline: none;
+        font: inherit;
+        border-radius: 4px;
+        transition: transform 200ms;
+        cursor: pointer;
+      }
+
+      .toggle:active {
+        transform: scale(0.9);
+      }
+
+      header {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        width: min(90%, 800px);
+        transform: translate(-50%, 0);
+      }
+
+      .input__box {
+        position: relative;
+        background-color: var(--background-200);
+        border-radius: 8px;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: none;
+        min-height: 48px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        padding: 0 1rem;
+      }
+
+      .news__card {
+        width: min(90%, 400px);
+        margin: 1rem auto;
+        color: var(--text-color-100);
+        border-bottom: 1px solid var(--text-color-100);
+        padding-bottom: 2rem;
+      }
+
+      .news__card__thumbnail {
+        width: 100%;
+        background-color: hsl(214, 89%, 75%);
+        height: 240px;
+        border-radius: 8px;
+      }
+
+      .news__card__title {
+        font-weight: normal;
+        font-size: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .news__card__footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .news__card__actions button {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background-color: var(--background-200);
+        border: 4px;
+      }
+
+      .news__card__actions .extra {
+        width: fit-content;
+        padding: 0 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="input__box">
+        <div class="icon"></div>
+        <input
+          type="search"
+          placeholder="Search notes..."
+          name="search"
+          id="search"
+        />
+      </div>
+    </header>
+    <div class="news__card">
+      <div class="news__card__thumbnail"></div>
+      <div class="news__card__details">
+        <h4 class="news__card__title">
+          Create a marquee animation with HTML and CSS
+        </h4>
+        <div class="news__card__footer">
+          <div class="news__card__author">Leve up coding</div>
+          <div class="news__card__actions">
+            <button></button>
+            <button></button>
+            <button class="extra"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card">
+      <h4 class="card__title">First note</h4>
+      <p class="card__content">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas rem alias
+        dicta, iusto, sit amet nam libero deserunt itaque eos ipsa explicabo
+        debitis esse.
+      </p>
+      <div class="card__footer">
+        <small>24/12/2022</small>
+      </div>
+    </div> -->
+
+    <div></div>
+
+    <button class="toggle">Toggle theme</button>
+  </body>
+</html>

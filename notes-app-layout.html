@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      main {
+        display: grid;
+        margin: 0 auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-ctn {
+        position: absolute;
+        height: 100%;
+        background-color: #010101;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 4rem 0;
+      }
+
+      .top,
+      .down {
+        width: min(90%, 480px);
+        list-style: none;
+      }
+
+      .top li,
+      .down li {
+        width: max-content;
+        padding: 1rem 1rem;
+        margin: 1rem 2rem;
+      }
+
+      .top li a,
+      .down li a {
+        text-decoration: none;
+        color: #ebebeb;
+      }
+
+      aside {
+        display: none;
+      }
+
+      section {
+        padding: 1rem 1rem;
+      }
+
+      input {
+        display: block;
+        width: 100%;
+        height: 48px;
+        margin: 1rem 0;
+        position: sticky;
+        top: 2rem;
+      }
+
+      h1 {
+        margin: 2rem 0;
+      }
+
+      .notes-ctn {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+
+      .note {
+        background-color: #ebebeb;
+        min-height: 200px;
+      }
+
+      @media (min-width: 768px) {
+        main {
+          display: grid;
+          grid-template-columns: auto 1fr;
+        }
+        nav {
+          position: sticky;
+          height: 100vh;
+        }
+        .nav-ctn {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="nav-ctn">
+          <ul class="top">
+            <li><a href="#">All notes</a></li>
+            <li><a href="#">Favorites</a></li>
+            <li><a href="#">Trash</a></li>
+            <li><a href="#">Categories</a></li>
+          </ul>
+          <ul class="down">
+            <li><a href="#">Add new notes to top</a></li>
+            <li><a href="#">Toggle Dark mode</a></li>
+          </ul>
+        </div>
+      </nav>
+      <section>
+        <input type="search" />
+        <h1>All notes</h1>
+        <div class="notes-ctn">
+          <div class="note"></div>
+          <div class="note"></div>
+          <div class="note"></div>
+          <div class="note"></div>
+          <div class="note"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
