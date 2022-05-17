@@ -23,133 +23,165 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgb(5, 5, 65);
+        color: rgb(75, 0, 130);
+        background-color: rgb(225, 182, 255);
       }
 
-      .tab {
-        width: min(90%, 400px);
-        padding: 1rem 1rem;
+      .canvas {
+        --scale: min(90vw, 480px);
+        position: relative;
+        width: var(--scale);
+        height: calc(var(--scale) * 1.2);
+        background-color: rgb(75, 0, 130);
+        border-radius: 4px;
+        overflow: hidden;
         display: flex;
         align-items: center;
+        justify-content: center;
+      }
+
+      .phone {
+        --size: 80%;
+        position: absolute;
+        top: 0;
+        width: var(--size);
+        height: var(--size);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
         background-color: #fff;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.124);
-        border-radius: 8px;
+        border-radius: 0 0 calc(var(--size) / 8) calc(var(--size) / 8);
+        overflow: hidden;
+      }
+
+      .phone::after {
+        content: "";
+        position: absolute;
+        bottom: 2%;
+        width: 50%;
+        height: calc(var(--size) / 64);
+        border-radius: 40px;
+        background-color: rgb(225, 182, 255);
+      }
+
+      .phone__tab {
+        position: relative;
+        width: 100%;
+        min-height: calc(var(--scale) * 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
       }
 
       .tab__button {
-        flex-grow: 1;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-
-      .tab__button:nth-child(3) {
-        transform: translate(0, -80%);
-      }
-
-      [data-type="primary"],
-      [data-type="secondary"] {
-        --scale: 56px;
-        width: var(--scale);
-        height: var(--scale);
+        --size: calc(var(--scale) / 8);
+        width: var(--size);
+        height: var(--size);
+        background-color: rgb(225, 182, 255);
         border-radius: 50%;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: none;
-        outline: none;
-        transition: transform 200ms;
         cursor: pointer;
+        outline: none;
+        border: none;
       }
 
-      [data-type="primary"] {
-        background-color: #000;
-        color: #fff;
+      .tab__button.toggle {
+        --size: calc(var(--scale) / 5);
         position: relative;
-        z-index: 1;
+        transform: translate(0, -1rem);
+        transition: transform 200ms, background-color 200ms;
       }
 
-      [data-type="primary"]::after,
-      [data-type="primary"]::before {
+      .tab__button.toggle.active {
+        background-color: rgb(75, 0, 130);
+      }
+
+      .tab__button.toggle::after,
+      .tab__button.toggle::before {
         content: "";
+        --distance: 2px;
         position: absolute;
-        width: 50%;
-        height: 2px;
+        width: 40%;
+        height: var(--distance);
         background-color: #fff;
         transition: transform 200ms;
       }
 
-      [data-type="primary"]::before {
-        transform: translate(0, -4px);
+      .tab__button.toggle::before {
+        transform: translate(0, calc(var(--distance) * -1.5));
       }
 
-      [data-type="primary"]::after {
-        transform: translate(0, 4px);
+      .tab__button.toggle::after {
+        transform: translate(0, calc(var(--distance) * 1.5));
       }
 
-      [data-type="primary"].active::before {
+      .tab__button.toggle.active::before {
         transform: translate(0, 0) rotate(45deg);
       }
 
-      [data-type="primary"].active::after {
+      .tab__button.toggle.active::after {
         transform: translate(0, 0) rotate(-45deg);
       }
 
-      [data-type="primary"]:active {
+      .tab__button.toggle:active {
         transform: scale(0.95);
       }
 
-      [data-type="secondary"] {
+      .tab__button--alt {
         position: absolute;
+        transition: transform calc(150ms * var(--speed))
+            cubic-bezier(0.175, 0.985, 0.08, 1.275),
+          opacity 100ms;
         opacity: 0;
+        z-index: -1;
         pointer-events: none;
-        background-color: red;
-        transition: transform calc(200ms * var(--delay))
-            cubic-bezier(0.175, 0.885, 0.08, 1.275),
-          opacity calc(200ms * var(--delay));
       }
 
-      .tab__button--action.active [data-type="secondary"] {
-        opacity: 1;
+      .phone__tab.active .tab__button--alt {
         transform: translate(var(--x), var(--y));
-        z-index: 1;
-        pointer-events: all;
+        opacity: 1;
+        pointer-events: none;
       }
     </style>
   </head>
   <body>
-    <div class="tab">
-      <div class="tab__button"></div>
-      <div class="tab__button"></div>
-      <div class="tab__button tab__button--action">
-        <button data-type="primary"></button>
-        <button
-          data-type="secondary"
-          style="--y: 0; --x: -4rem; --delay: 1"
-        ></button>
-        <button
-          data-type="secondary"
-          style="--y: -4rem; --x: 0; --delay: 3"
-        ></button>
-        <button
-          data-type="secondary"
-          style="--y: 0; --x: 4rem; --delay: 5"
-        ></button>
+    <div class="canvas">
+      <div class="phone">
+        <div class="phone__tab">
+          <button class="tab__button toggle"></button>
+          <button
+            class="tab__button tab__button--alt"
+            style="
+              --x: calc(var(--size) / -0.6);
+              --y: calc(var(--size) / -1.2);
+              --speed: 1;
+            "
+          ></button>
+          <button
+            class="tab__button tab__button--alt"
+            style="--x: 0; --y: calc(var(--size) / -0.5); --speed: 3"
+          ></button>
+          <button
+            class="tab__button tab__button--alt"
+            style="
+              --x: calc(var(--size) / 0.6);
+              --y: calc(var(--size) / -1.2);
+              --speed: 5;
+            "
+          ></button>
+        </div>
       </div>
-      <div class="tab__button"></div>
-      <div class="tab__button"></div>
     </div>
-
     <script>
-      const toggleButton = document.querySelector("[data-type=primary]");
-      const tabActionButton = document.querySelector(".tab__button--action");
+      const TAB = document.querySelector(".phone__tab");
+      const TOGGLE_BUTTON = document.querySelector(".tab__button.toggle");
 
-      toggleButton.addEventListener("click", () => {
-        toggleButton.classList.toggle("active");
-        tabActionButton.classList.toggle("active");
+      TOGGLE_BUTTON.addEventListener("click", () => {
+        TAB.classList.toggle("active");
+        TOGGLE_BUTTON.classList.toggle("active");
       });
     </script>
   </body>
