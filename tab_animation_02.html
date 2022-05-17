@@ -62,15 +62,18 @@
         height: calc(var(--size) / 64);
         border-radius: 40px;
         background-color: rgb(94, 94, 94);
+        overflow: hidden;
       }
 
       .phone__tab {
         position: relative;
         width: 100%;
-        min-height: calc(var(--scale) * 0.25);
+        min-height: calc(var(--scale) * 0.32);
         display: flex;
+        flex-direction: row-reverse;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 10%;
         z-index: 1;
       }
 
@@ -89,10 +92,8 @@
       }
 
       .tab__button.toggle {
-        --size: calc(var(--scale) / 5);
         position: relative;
-        transform: translate(0, -1rem);
-        transition: transform 200ms, background-color 200ms;
+        transition: transform 400ms, background-color 200ms;
       }
 
       .tab__button.toggle.active {
@@ -131,8 +132,8 @@
       }
 
       .tab__button--alt {
-        position: absolute;
-        transition: transform calc(100ms * var(--speed))
+        transform: translate(var(--x), var(--y));
+        transition: transform calc(200ms * var(--speed))
             cubic-bezier(0.175, 0.985, 0.08, 1.275),
           opacity 100ms;
         opacity: 0;
@@ -141,7 +142,8 @@
       }
 
       .phone__tab.active .tab__button--alt {
-        transform: translate(var(--x), var(--y));
+        position: static;
+        transform: translate(0, 0);
         opacity: 1;
         pointer-events: none;
       }
@@ -154,23 +156,15 @@
           <button class="tab__button toggle"></button>
           <button
             class="tab__button tab__button--alt"
-            style="
-              --x: calc(var(--size) / -0.6);
-              --y: calc(var(--size) / -1.2);
-              --speed: 1;
-            "
+            style="--x: 0; --y: calc(var(--size) / 0.6); --speed: 1"
           ></button>
           <button
             class="tab__button tab__button--alt"
-            style="--x: 0; --y: calc(var(--size) / -0.5); --speed: 3"
+            style="--x: 0; --y: calc(var(--size) / 0.6); --speed: 3"
           ></button>
           <button
             class="tab__button tab__button--alt"
-            style="
-              --x: calc(var(--size) / 0.6);
-              --y: calc(var(--size) / -1.2);
-              --speed: 5;
-            "
+            style="--x: 0; --y: calc(var(--size) / 0.6); --speed: 5"
           ></button>
         </div>
       </div>
