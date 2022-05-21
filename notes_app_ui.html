@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: inherit;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .app__container {
+        width: min(100%, 1200px);
+        padding: 3rem 1rem;
+        margin: 0 auto;
+      }
+
+      .app__sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 100;
+        transition: opacity 400ms;
+      }
+
+      .sidebar__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: min(70%, 400px);
+        height: 100%;
+        background-color: #fff;
+        transform: translate(-100%, 0);
+        padding: 3rem 1rem;
+        transition: transform 300ms;
+        box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .app__sidebar.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .app__sidebar.active .sidebar__container {
+        transform: translate(0, 0);
+      }
+      .app__main {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .app__searchbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 1rem;
+        background-color: #fff;
+        display: flex;
+        border-radius: 40px;
+        overflow: hidden;
+        outline: 1px solid black;
+      }
+
+      .app__searchbar input,
+      .app__searchbar button {
+        outline: none;
+        border: none;
+        height: 48px;
+      }
+
+      .app__searchbar input {
+        flex-grow: 1;
+      }
+
+      .app__searchbar button {
+        width: 48px;
+      }
+
+      .notes__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+
+      .app__note {
+        background: lightgreen;
+        min-height: 140px;
+        border-radius: 1rem;
+        padding: 1rem 1rem;
+      }
+
+      .app__float__button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 48px;
+        height: 48px;
+        background-color: black;
+        color: #fff;
+        border-radius: 50%;
+        z-index: 100;
+      }
+
+      .app__text__box {
+        padding: 2rem 0rem;
+      }
+
+      @media (min-width: 1000px) {
+        .app {
+          display: grid;
+          grid-template-columns: 280px 1fr;
+        }
+
+        .app__sidebar {
+          position: sticky;
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .sidebar__container {
+          transform: translate(0, 0);
+          width: 100%;
+          box-shadow: none;
+          background: none;
+        }
+
+        .app__float__button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="app__sidebar">
+        <div class="sidebar__container"></div>
+      </div>
+      <div class="app__main">
+        <div class="app__container">
+          <div class="app__text__box">
+            <span>Hello dear 👋🏾</span>
+            <h1>All Notes</h1>
+          </div>
+          <div class="app__searchbar">
+            <button class="menu__toggle">Menu</button>
+            <input type="search" name="search" id="search" />
+          </div>
+          <div class="notes__container">
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+            <div class="app__note"></div>
+          </div>
+        </div>
+      </div>
+      <div class="app__float__button"></div>
+    </div>
+
+    <script>
+      const MENU_BUTTON = document.querySelector(".menu__toggle");
+      const APP_SIDEBAR = document.querySelector(".app__sidebar");
+
+      MENU_BUTTON.addEventListener("click", () => {
+        APP_SIDEBAR.classList.toggle("active");
+      });
+
+      APP_SIDEBAR.addEventListener("click", () => {
+        APP_SIDEBAR.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
