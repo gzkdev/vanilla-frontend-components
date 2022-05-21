@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        line-height: 1.5;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 1rem 1rem;
+      }
+
+      h1,
+      h2 {
+        margin-bottom: 1rem;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+      }
+
+      .header__container {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header nav ul {
+        margin: 0;
+      }
+
+      header nav ul li {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
+
+      header a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .hero,
+      main {
+        width: 100%;
+        padding: 1rem 1rem;
+      }
+
+      .hero {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 15vh 1rem;
+        background-color: rgb(240, 219, 255);
+      }
+
+      .hero__text-container {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .hero__thumbnail {
+        --scale: min(80vw, 144px);
+        width: var(--scale);
+        height: var(--scale);
+        background-color: rgb(255, 255, 255);
+        border-radius: 8px;
+        margin: 2rem 0;
+        overflow: hidden;
+      }
+
+      .hero__thumbnail img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .hero__text-container h3 {
+        margin: 2rem 0 0;
+      }
+
+      .hero__text-container ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+      }
+
+      .hero__text-container ul li {
+        margin: 0 0;
+      }
+
+      .hero__text-container ul a {
+        text-decoration: none;
+        color: #fff;
+        background-color: rgb(120, 1, 206);
+        display: inline-block;
+        margin: 0.5rem 1rem 0 0;
+        padding: 0.5rem 2rem;
+        border-radius: 8px;
+        border: 1px solid currentColor;
+        transition: 200ms;
+      }
+
+      .hero__text-container ul a:hover {
+        background-color: rgb(255, 255, 255);
+        color: rgb(120, 1, 206);
+      }
+
+      .hero__text-container ul a::after {
+        content: "↗";
+        margin-left: 0.5rem;
+      }
+
+      main .container > div {
+        margin: 4rem 0;
+      }
+
+      ul {
+        margin-bottom: 2rem;
+        list-style: square;
+      }
+
+      ul li {
+        margin-bottom: 1rem;
+      }
+
+      .inner__list li {
+        list-style: circle;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+      }
+
+      ul li::marker {
+        color: rgb(192, 106, 253);
+        font-weight: bold;
+      }
+
+      .list__sub-title {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      .list__sub-title small {
+        color: rgb(120, 1, 206);
+        font-weight: normal;
+      }
+
+      .list__sub-title.alt small {
+        color: inherit;
+      }
+
+      form {
+        margin: 2rem 0;
+      }
+
+      .form__box {
+        margin-bottom: 1rem;
+      }
+
+      .form__box input,
+      .form__box textarea {
+        width: 100%;
+        height: 40px;
+        font-size: 1rem;
+        font-family: inherit;
+        border-radius: 4px;
+        padding: 0 1rem;
+        outline: none;
+      }
+
+      .form__box textarea {
+        min-height: 200px;
+        resize: none;
+      }
+
+      .form__button {
+        display: block;
+        margin-left: auto;
+        width: fit-content;
+        padding: 0 4rem;
+        height: 40px;
+        background-color: rgb(120, 1, 206);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 200ms;
+      }
+
+      .form__button:hover {
+        background-color: rgb(78, 4, 131);
+      }
+
+      .page__wrapper {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 12vh 1rem;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+      }
+
+      .header__container {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header nav ul li {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
+
+      header a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo {
+        display: none;
+      }
+
+      @media (min-width: 400px) {
+        .navigation__bar-container > a {
+          display: inline-block;
+        }
+      }
+
+      @media (min-width: 600px) {
+        .container {
+          width: 80%;
+        }
+
+        .logo {
+          display: block;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        body {
+          display: flex;
+          align-items: flex-start;
+        }
+
+        .hero {
+          position: sticky;
+          top: 0;
+        }
+
+        .navigation__bar {
+          position: sticky;
+          transform: translate(0, 0);
+          margin-bottom: 2rem;
+        }
+
+        .hero__thumbnail {
+          margin: 0 0 1rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header__container">
+          <a class="logo" href="#">Hello 👋🏾</a>
+          <nav>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./index.html">Contact</a></li>
+              <li><a href="./index.html">Register</a></li>
+              <li><a href="./index.html">Sign in</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="container">
+        <div class="hero__text-container">
+          <div class="hero__thumbnail"></div>
+          <span>Hello 👋🏾</span>
+          <h1>I'm Godswill Ezihe</h1>
+          <p>
+            I'm a frontend engineer from Nigeria. I'm passionate about building
+            interactive and useful software for people. When you don't find me
+            on the computer, you may find me at the gym. I enjoy rap music,
+            lo-fi beats, table tennis and watching animes.
+            <i>(I'm single too!)</i>
+          </p>
+          <div>
+            <h3>Let's connect</h3>
+            <ul>
+              <li>
+                <a
+                  href="https://twitter.com/gzkdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Twitter</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/gzkdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Github</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/godswill-ezihe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://codepen.io/gzkdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Codepen</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="container">
+        <div class="goals">
+          <h2>Goals</h2>
+          <ul>
+            <li>
+              Develop a solid understanding of software engineering fundamentals
+            </li>
+            <li>Learn to build to build scalable and performant software</li>
+            <li>
+              Learn how to collaborate with other engineers to build quality
+              software
+            </li>
+            <li>
+              Master the use of different tools that aid that building and
+              maintenance of software
+            </li>
+            <li>Become grounded in data structures and algorithms</li>
+            <li>Get a job in Big Tech as a Frontend Software Engineer</li>
+          </ul>
+        </div>
+
+        <div class="education">
+          <h2>Education</h2>
+          <ul>
+            <li>
+              <div class="list__sub-title alt">
+                Nnamdi Azikiwe University, <small><i>Nigeria</i></small>
+              </div>
+              <div>2019 - expected 2024</div>
+              <p>Cumulative GPA: 4.65 / 5.0</p>
+            </li>
+
+            <li>
+              <div class="list__sub-title alt">
+                Alvana Model Secondary School, <small><i>Nigeria</i></small>
+              </div>
+              <div>2011 - 2017</div>
+              <p>Awards: Best Graduating student in Chemistry</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience">
+          <h2>Experience</h2>
+          <ul>
+            <li>
+              <div class="list__sub-title">
+                Frontend developer intern, <small>@ Silicon Africa LLC</small>
+              </div>
+              <ul class="inner__list">
+                <li>Built good software with HTML, CSS, and JavaScript</li>
+                <li>Built good software with HTML, CSS, and JavaScript</li>
+              </ul>
+            </li>
+
+            <li>
+              <div class="list__sub-title">
+                Product design intern, <small>@ Utiva Inc</small>
+              </div>
+              <ul class="inner__list">
+                <li>Built good software with HTML, CSS, and JavaScript</li>
+                <li>Built good software with HTML, CSS, and JavaScript</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skills">
+          <h2>Skills</h2>
+          <ul>
+            <li><b>Languages:</b> HTML, CSS, JavaScript</li>
+            <li><b>Frameworks & Libraries:</b> TailwindCSS, React</li>
+            <li><b>Tools:</b> Github, Repl.it, Netlify</li>
+          </ul>
+        </div>
+
+        <div class="hobbies">
+          <h2>Hobbies</h2>
+          <ul>
+            <li>Streaming Lofi-beats</li>
+            <li>Trying rap music (off course I'm not Kendrick Lamar, lol)</li>
+            <li>Drawing</li>
+            <li>Going to the gym</li>
+            <li>Playing table tennis</li>
+            <li>Swimming (without the floater I'd drown, lol)</li>
+            <li>Reading / Writing</li>
+            <li>
+              Listening to podcasts (mostly Jordan Peterson and psychology
+              related content )
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

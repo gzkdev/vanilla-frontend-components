@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        line-height: 1.5;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 1rem 1rem;
+      }
+      form {
+        margin: 2rem 0;
+      }
+
+      .form__box {
+        margin-bottom: 1rem;
+      }
+
+      .form__box input,
+      .form__box textarea {
+        width: 100%;
+        height: 40px;
+        font-size: 1rem;
+        font-family: inherit;
+        border-radius: 4px;
+        padding: 0 1rem;
+        outline: none;
+      }
+
+      .form__box textarea {
+        min-height: 200px;
+        resize: none;
+      }
+
+      .form__button {
+        display: block;
+        margin-left: auto;
+        width: fit-content;
+        padding: 0 4rem;
+        height: 40px;
+        background-color: rgb(120, 1, 206);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 200ms;
+      }
+
+      .form__button:hover {
+        background-color: rgb(78, 4, 131);
+      }
+
+      .page__wrapper {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 12vh 1rem;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+      }
+
+      .header__container {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header nav ul li {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
+
+      header a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo {
+        display: none;
+      }
+
+      @media (min-width: 500px) {
+        .logo {
+          display: inline-block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header__container">
+          <a class="logo" href="#">Hello 👋🏾</a>
+          <nav>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./index.html">Contact</a></li>
+              <li><a href="./index.html">Register</a></li>
+              <li><a href="./index.html">Sign in</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="page__wrapper">
+        <h2>Contact</h2>
+        <form>
+          <div class="form__box">
+            <label for="priority">Priority</label>
+            <input required type="text" name="priority" id="priority" />
+          </div>
+          <div class="form__box">
+            <label for="name">Name</label>
+            <input required type="text" name="name" id="name" />
+          </div>
+          <div class="form__box">
+            <label for="email">Email</label>
+            <input required type="email" name="email" id="email" />
+          </div>
+          <div class="form__box">
+            <label for="message">Message</label>
+            <textarea name="message" id="message"></textarea>
+          </div>
+          <button type="submit" class="form__button">Submit</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
