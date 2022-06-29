@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .btn {
+        --scale: min(20vh, 64px);
+        width: var(--scale);
+        height: var(--scale);
+        color: inherit;
+        border: none;
+        outline: none;
+        border-radius: calc(var(--scale) / 3);
+        background: currentColor;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 400ms;
+      }
+
+      .btn span {
+        position: absolute;
+        width: 50%;
+        height: 4px;
+        border-radius: 8px;
+        background-color: #000;
+        opacity: 1;
+        transition: transform 400ms, opacity 200ms;
+      }
+
+      .btn span:nth-child(1) {
+        transform: translate(0, calc((var(--scale) / 6) * -1));
+      }
+
+      .btn span:nth-child(3) {
+        transform: translate(0, calc(var(--scale) / 6));
+      }
+
+      .btn:active {
+        transform: scale(0.8);
+      }
+
+      .btn.active span:nth-child(1) {
+        transform: translate(0, 0) rotate(45deg);
+      }
+
+      .btn.active span:nth-child(2) {
+        transform: translate(-200%, 0);
+        opacity: 0;
+      }
+
+      .btn.active span:nth-child(3) {
+        transform: translate(0, 0) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <script>
+      const BTN = document.querySelector(".btn");
+      BTN.addEventListener("click", function () {
+        this.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
