@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ebebeb;
+        color: #fff;
+      }
+
+      .btn {
+        --scale: 64px;
+        width: calc(var(--scale) * 2);
+        height: var(--scale);
+        color: inherit;
+        border: none;
+        outline: none;
+        border-radius: calc(var(--scale) / 2);
+        background: currentColor;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 400ms, box-shadow 1000ms;
+        box-shadow: 0 24px 24px 16px rgba(0, 0, 0, 0.125);
+        z-index: 1;
+      }
+
+      .btn:hover {
+        box-shadow: 0 12px 12px 8px rgba(0, 0, 0, 0.08);
+        transform: scale(0.9);
+      }
+
+      .btn::before,
+      .btn::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background-color: #000;
+      }
+
+      .btn::before {
+        width: 140%;
+        height: 140px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 500ms ease-out;
+        z-index: -1;
+      }
+
+      .btn::after {
+        left: 12px;
+        width: calc(var(--scale) / 1.5);
+        height: calc(var(--scale) / 1.5);
+        transition: transform 300ms, background-color 400ms, color 600ms;
+        box-shadow: inset 0 6px 16px 0px rgba(0, 0, 0, 0.008);
+      }
+
+      .btn.active::before {
+        transform: scaleX(1);
+      }
+
+      .btn.active::after {
+        transform: translateX(150%);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn"></button>
+    <script>
+      const BTN = document.querySelector(".btn");
+      BTN.addEventListener("click", function () {
+        this.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
