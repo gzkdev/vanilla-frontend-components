@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-size: 1rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        line-height: 1.5;
+        background-color: #e7e7e7;
+      }
+
+      #app {
+        display: grid;
+        gap: 4px;
+        padding: 16px;
+        grid-auto-flow: dense;
+      }
+
+      #app > div {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        overflow: hidden;
+      }
+
+      .chart {
+        height: 50vh;
+      }
+
+      #app .orderbook {
+        padding: 0px 0px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .orderbook .header,
+      .header {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e7e7e7;
+      }
+
+      .orderbook-ctn {
+        flex: 1;
+        display: grid;
+        grid-template-rows: 60% auto;
+        gap: 4px;
+        background: #e7e7e7;
+      }
+
+      .bottom,
+      .top {
+        border-radius: 8px;
+        background-color: #fff;
+      }
+
+      .top {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .top-ctn {
+        flex: 1;
+        display: grid;
+        grid-template-rows: calc(50% - 16px) 32px calc(50% - 16px);
+        /* display: flex;
+        flex-direction: column; */
+      }
+
+      .table {
+        /* flex: 1; */
+        overflow-y: auto;
+        /* max-height: calc(100% - 94px); */
+      }
+
+      .row {
+        height: 24px;
+        border-bottom: 2px solid #e7e7e7;
+      }
+
+      .price {
+        padding: 8px;
+        border-top: 1px solid #e7e7e7;
+        border-bottom: 1px solid #e7e7e7;
+      }
+
+      /* input[type="range"] {
+        -webkit-appearance: none !important;
+        width: 100%;
+        height: 2px;
+        background: black;
+        border: none;
+        outline: none;
+      } */
+      input[type="range"] {
+        -webkit-appearance: none !important;
+        width: 420px;
+        height: 2px;
+        background: black;
+        border: none;
+        outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none !important;
+        width: 16px;
+        height: 16px;
+        background: black;
+        border: 2px solid black;
+        border-radius: 50%;
+        transform: translate(0, -65%);
+        cursor: pointer;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        background: black;
+      }
+
+      @media (min-width: 768px) {
+        #app {
+          grid-template-columns: repeat(12, 1fr) 48px;
+          grid-template-rows: repeat(2, minmax(auto, 80vh));
+        }
+
+        .chart {
+          grid-column: span 8;
+        }
+
+        .orderbook {
+          grid-column: span 8;
+        }
+
+        .trade-tabs {
+          grid-column: span 4;
+          grid-row: span 2;
+        }
+
+        .menu {
+          grid-row: span 3;
+        }
+
+        .market {
+          grid-column: span 12;
+          height: 50vh;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        #app {
+          grid-template-columns: repeat(24, 1fr) 48px;
+        }
+        .chart {
+          grid-column: span 14;
+          height: 80vh;
+        }
+
+        .trade-tabs,
+        .orderbook {
+          grid-column: span 5;
+        }
+
+        .trade-tabs {
+          grid-row: span 2;
+        }
+
+        .market {
+          grid-column: span 19;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="chart">
+        <div>Chart</div>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="40"
+          oninput="rangeValue.innerText = this.value"
+          step="20"
+          list="leverage"
+        />
+        <datalist id="leverage">
+          <option value="0">0</option>
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+          <option value="80">80</option>
+          <option value="100">100</option>
+        </datalist>
+        <p id="rangeValue">40</p>
+      </div>
+
+      <div class="orderbook">
+        <div class="orderbook-ctn">
+          <div class="top">
+            <div class="header">Orderbook</div>
+            <div class="top-ctn">
+              <div class="table">
+                <div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                </div>
+              </div>
+              <div class="price">$29,920.00</div>
+              <div class="table">
+                <div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                  <div class="row"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="header">Recent trades</div>
+            <div class="table">
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+              <div class="row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trade-tabs">Trade tabs</div>
+      <div class="menu"></div>
+      <div class="market">Market History</div>
+    </div>
+  </body>
+</html>
